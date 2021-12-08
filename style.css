@@ -1,0 +1,603 @@
+
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+  }
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height: auto;
+}
+/* =====variables======= */
+:root{
+  --header-height:4.5rem;
+  /* colors */
+  --botton-color:rgba(15, 0, 102, 0.874);
+  --rey-color:rgba(16, 0, 102, 1);
+  --menu-color:rgb(156, 193, 217); 
+  --base-color: rgba(104,142,166, 1);  ; 
+  --base-color-title: rgba(50,71,89, 1);
+  --body-color:rgba(156, 193, 217, 0.687); 
+  --text-color:rgba(13,13,13, 1);
+  /* fonts */
+  --title-font-size:1.875rem;
+  --subtitle-font-size:1rem;
+  --title-font:"Poppins",sans-serif;
+  --body-font:"DM Sans", sans-serif;
+}
+
+
+/* =======base======== */
+html {
+  scroll-behavior: smooth;  
+}
+body{
+    font: 400 1rem var(--body-font);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+  }
+.title{
+    font: 700 var(--title-font-size)var(--title-font);
+    color:black;
+    
+}
+  
+.button{
+    background-color: var(--base-color);
+    border-radius: 0.25rem;
+    color:black;
+    height: 3.5rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0  2rem;
+    font: 500 1rem var(--body-font);
+    transition:  background 0.3s;
+  }
+  .button:hover{
+    background-color:var(--botton-color); 
+  }
+  .divider-1{
+    height: 1px;
+    background:linear-gradient(270deg,rgba(15, 0, 102, 0.518),transparent)
+  }
+  .divider-2{
+    height: 1.5px;
+    background:linear-gradient(270deg,transparent,rgba(15, 0, 102, 0.461))
+  }
+/* ========layout======== */
+.container{
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+.grid{
+  display: grid;
+  gap: 2rem;
+}
+.section {
+  padding: calc(5rem + var(--header-height)) 0;
+}
+.section .title{
+  margin-bottom: 1rem;   
+}
+.section.subtitle{
+  font-size: var(--subtitle-font-size);
+}
+.section header{
+    margin-bottom: 4rem;
+  }
+.section header  i{
+    color: var(--rey-color);
+  }
+#header{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  margin-bottom: 2rem;
+  height: 4.5rem;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color:white;
+} 
+
+
+#header.scroll{
+  background-color: var(--body-color);
+  box-shadow: 2px 4px 5px 0px  rgba(0, 0, 0,0.15);
+}
+#header.scroll .logo span {
+  color: var(--rey-color);
+}
+#header.scroll .icon-menu{
+  color:var(--rey-color);
+}
+
+
+/* ====logo===== */
+.logo{
+  font: 700 1.2rem var(--title-font);
+  color: rgba(0, 0, 0, 0.443);
+}
+.logo span{
+  
+  font: 900 1rem'Great Vibes';
+  color: black;
+  font-size: 2rem;
+
+}
+.logo-alt span{
+  color: white;
+}
+
+/* ============navegation========= */
+nav{
+  height:var(--header-height);
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+nav ul li{
+  text-align: center;
+  
+}
+nav ul li a{
+  transition:  color 0.3s;
+  position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active{
+  color: var(--rey-color);
+  
+}
+nav ul li a::after{
+  content: "";
+  width: 0%;
+  height: 2px;
+  background:var(--rey-color);
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+  transition: width 0.2s;
+}
+nav ul li a:hover::after,
+nav ul li a.active::after{
+  
+  width: 100%;
+
+}
+
+nav .menu{
+  opacity: 0;
+  visibility: hidden;
+  top: -20rem;
+  transition: 0.2s;
+}
+nav .menu ul{
+  display: none;
+}
+/* Mostrar menu */
+nav.show .menu{
+  opacity: 1;
+  visibility: visible;
+  background:var(--menu-color);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-content: center;
+}
+nav.show .menu ul{
+  display: grid;
+}
+
+nav.show ul.grid{
+  gap: 4rem;
+}
+/* ================toggle menu============= */
+.toggle{
+  color:black;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav .icon-close{
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+  transition:0.2s ;
+}
+nav.show div.icon-close{
+  visibility: visible;  
+  opacity: 1;
+  top: 1.5rem;
+ 
+
+}
+
+
+
+
+/* ==========home========= */
+#home{
+  overflow: hidden;
+}
+#home .container{
+  margin: 0;
+ 
+}
+#home .image{
+  position: relative;
+}
+#home .image::before{
+  content:'';
+  height: 100%;
+  width: 100%;
+  background-color: var(--base-color-title);
+  position: absolute;
+  top: -16.8%;
+  left: 16.7%;
+  z-index: 0;
+}
+#home .image img{
+  position: relative;
+  right: 2.93rem;
+}
+#home .image,
+#home .image::before{
+  border-radius:0.25rem ;
+}
+
+#home .text{
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+
+#home text h1{
+  margin-bottom: 1rem;
+}
+#home .text p{
+  margin-bottom: 2rem;
+  
+  
+}
+/* ==========ABOUT========== */
+
+#about .container{
+  margin: 0;
+}
+#about .image{
+  position: relative;
+}
+#about .image::before{
+  content:'';
+  height: 100%;
+  width: 100%;
+  background-color: var(--base-color-title);
+  position: absolute;
+  top: -8.3%;
+  left: -33%;
+  z-index: 0;
+}
+#about .image img{
+  position: relative;
+  
+ 
+}
+#about .image,
+#about .image::before{
+  border-radius:0.25rem ;
+}
+#about .text {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  
+}
+#about .text p{
+  text-align: justify;
+}
+
+/* ====== Services====== */
+.cards.grid{
+  gap: 1.5rem;
+}
+.card{
+  padding: 3.625rem 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.277);
+  border-radius: 3px 3px 0px 0px;
+  border-bottom:  0.25rem solid var(--rey-color);
+  text-align: center;
+}
+.card i{
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 8rem;
+}
+.card title{
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+/* ====== Testimonials====== */
+
+#testimonials .container{
+  margin-left: 0;
+  margin-right: 0
+}
+#testimonials header{
+  
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: 0;
+}
+
+#testimonials blockquote{
+  padding:1.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.276);
+  background-color: white;
+}
+#testimonials blockquote p{
+  position: relative;
+  text-indent: 1.875rem;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+  
+}
+#testimonials blockquote p span{
+  font: 700 2rem serif;
+  position: absolute;
+  top: -0.375rem;
+  left: -1.875rem;
+  color: var(--rey-color);
+}
+#testimonials  cite{
+display: flex;
+align-items: center;
+}
+#testimonials  cite img{
+width: 2rem;
+height: 2rem;
+object-fit: cover;
+clip-path: circle();
+margin-right: 0.5rem;
+
+}
+
+
+/* ================swiper============= */
+.swiper-slide{
+  height: auto;
+  padding:4rem 1rem ;
+}
+.swiper-button-next{
+  color: rgba(0, 0, 0, 0.737);
+ 
+
+}
+.swiper-button-prev{
+  color: rgba(0, 0, 0, 0.737);
+}
+/* contact */
+#contact .grid{
+  gap: 4rem;
+
+}
+#contact .text p{
+  margin-bottom: 2rem;
+}
+#contact .button i,#contact ul li i{
+  font-size: 1.5rem;
+  margin-right:0.625rem;
+
+}
+#contact ul.grid{
+  gap: 2rem;
+}
+#contact ul li {
+  display: flex;
+  align-items: center;
+}
+  #contact ul li i{
+    color: var(--rey-color);
+  }
+  /* ============FOOTER=============== */
+footer{
+  background-color: var(--base-color);
+}
+footer.section{
+  padding: 4rem 0 ;
+}
+footer .logo{
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+footer .brand p{
+  color: whitesmoke;
+  margin-bottom:1.5rem;
+}
+footer i{
+  font-size: 1.5rem;
+  color: whitesmoke;
+  
+}
+footer .social a {
+  margin-right: 2rem;
+  /* ou display:flex gap:2rem */
+  transition: 0.3s;
+  display: inline-block;
+
+}
+footer .social a:hover{
+  transform: translateY(-8px);
+}
+.back-to-top{
+    background:whitesmoke;
+    color:black;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+
+    padding: 0.8rem;
+    clip-path: circle();
+
+    font-size: 1.5rem;
+    line-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    transform:translateY(100%)
+}
+p strong{
+    color: var(--rey-color);
+}
+  .back-to-top.show{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+/* Responsivo */
+/* Media queries: */
+ /* /* extra-large-devices:1200> */
+ @media(min-width:1200px){
+   .container{
+     max-width: 1120px;
+     margin-left: auto;
+     margin-right: auto;
+   }
+  main {
+    margin-top: var(--header-height);
+  }
+  .section{
+    /* ajuste de header e home */
+    padding: 10rem 0;
+  }
+  .section header{
+  max-width: 32rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  .button{
+    height: 3rem;
+  }
+  /* fazer o menu aparecer no home */
+  nav .menu{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+  /* colocar menu um ao lado do outro  */
+  nav .menu ul{
+    display: flex;
+    gap: 2rem;
+   
+  }
+  /* Mudar fonte do menu  */
+  nav .menu ul li a.title{
+    font: 400 1rem var(--body-font);
+    -webkit-font-smoothing: antialiased;
+  }
+  nav .menu ul li a.title.active{
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+  /* tirar o icone do menu que é usado no mobile */
+  nav .icon-menu{
+    display: none;
+  }
+    /* colocar a foto ao lado do texto */
+    #home .container{
+      grid-auto-flow:column;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+  /*colocar o texto na frente da imagem   */
+  #home .image{
+    order: 1;
+  }
+  #home .text {
+    order: 0;
+    max-width: 24rem;
+    text-align: left;
+  }
+  /* ======about====== */
+  #about .container{
+    grid-auto-flow: column;
+    margin: 0 auto;
+  }
+  /* testimonials */
+  #testimonials .container{
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+ }
+ /* services */
+    .cards{
+  grid-template-columns: 1fr 1fr 1fr;
+   
+ }
+  .card{
+   padding-left: 2rem;
+   padding-right: 2rem;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+ }
+ /* contact */
+  #contact .container{
+   grid-auto-flow: column;
+   align-items: center;
+ }
+  #contact .text{
+    max-width: 25rem;
+  }
+  footer .container{
+   grid-auto-flow: column;
+   align-items: center;
+   justify-content: space-between;
+
+  }
+  footer .logo,
+  footer .logo span{
+    font-size: 2.25rem;
+  }
+
+} 
+
+
+
+/* large-devices: 1023>  */
+/* large-devices: 992> */
+/* Medium devices:767 > */
+ @media(min-width:992px){
+  :root{
+    --title-font-size:2.25rem;
+    --subtitle-font-size:1.125rem;
+  }
+ }
+
+
+
